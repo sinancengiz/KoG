@@ -8,9 +8,14 @@
 
 import React from 'react';
 import {View} from 'react-native';
+import Landing from './screen/Landing';
 
 const App = () => {
-  return <View />;
+  return (
+    <View>
+      <Landing />
+    </View>
+  );
 };
 
 export default App;
