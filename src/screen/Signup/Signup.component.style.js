@@ -32,8 +32,8 @@ export const styles = {
     height: 200,
     marginTop: '10%',
   },
-  loginButton: {
-    backgroundColor: 'green',
+  signupButton: {
+    backgroundColor: 'red',
     marginTop: '10%',
     minWidth: 250,
     minHeight: 40,

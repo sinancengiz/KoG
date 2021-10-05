@@ -9,9 +9,11 @@ import {
 } from 'react-native';
 import {styles} from './Landing.component.style';
 
-const Login = () => {
+const SignUp = () => {
+  const [userName, onChangeUserName] = useState(null);
   const [email, onChangeEmail] = useState(null);
   const [password, onChangePassword] = useState(null);
+  const [passwordConfirmation, onChangePasswordConfirmation] = useState(null);
   return (
     <ScrollView style={styles.scrollView}>
       <Text style={styles.title}>KoG</Text>
@@ -20,6 +22,12 @@ const Login = () => {
         <Image
           style={styles.iconStyle}
           source={require('../../assets/icons/castle(1).png')}
+        />
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangeUserName}
+          value={userName}
+          placeholder="Enter Username"
         />
         <TextInput
           style={styles.input}
@@ -33,16 +41,22 @@ const Login = () => {
           value={password}
           placeholder="Enter Password"
         />
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangePasswordConfirmation}
+          value={passwordConfirmation}
+          placeholder="Confirm Password"
+        />
         <Pressable
           style={styles.loginButton}
           onPress={() => {
-            alert('Login Button Pressed');
+            alert('Sign up Button Pressed');
           }}>
-          <Text style={styles.buttonText}>{'Login'}</Text>
+          <Text style={styles.buttonText}>{'Sign Up'}</Text>
         </Pressable>
       </View>
     </ScrollView>
   );
 };
 
-export default Login;
+export default SignUp;
