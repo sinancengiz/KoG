@@ -48,7 +48,7 @@ const SignUp = () => {
           placeholder="Confirm Password"
         />
         <Pressable
-          style={styles.loginButton}
+          style={styles.signupButton}
           onPress={() => {
             alert('Sign up Button Pressed');
           }}>
