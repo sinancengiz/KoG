@@ -7,7 +7,7 @@ import {
   Pressable,
   TextInput,
 } from 'react-native';
-import {styles} from './Landing.component.style';
+import {styles} from './Signup.component.style';
 
 const SignUp = () => {
   const [userName, onChangeUserName] = useState(null);
