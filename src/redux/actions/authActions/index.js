@@ -5,16 +5,14 @@ const loginRequest = (credentials) => ({
   credentials,
 });
 
-const loginSuccess = (user, token, userOrganization) => ({
+const loginSuccess = (user) => ({
   type: AUTH.LOGIN_SUCCESS,
   user,
-  token,
-  userOrganization,
 });
 
-const loginFailure = (err) => ({
+const loginFailure = (error) => ({
   type: AUTH.LOGIN_FAILURE,
-  err,
+  error,
 });
 
 const signupRequest = (credentials) => ({
@@ -27,9 +25,9 @@ const signupSuccess = (user) => ({
   user,
 });
 
-const signupFailure = (err) => ({
+const signupFailure = (error) => ({
   type: AUTH.SIGNUP_FAILURE,
-  err,
+  error,
 });
 
 const requestLogout = () => ({
