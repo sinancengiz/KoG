@@ -31,6 +31,7 @@ export const styles = {
     width: 200,
     height: 200,
     marginTop: '10%',
+    marginBottom: '5%',
   },
   signupButton: {
     backgroundColor: 'red',
@@ -47,6 +48,11 @@ export const styles = {
     fontWeight: 'bold',
   },
   input: {
-    color: 'red',
+    color: 'black',
+    backgroundColor: 'white',
+    borderSize: 4,
+    width: 250,
+    height: 40,
+    margin: 5,
   },
 };
