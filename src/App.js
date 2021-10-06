@@ -1,20 +1,16 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
+import {Provider} from 'react-redux';
+import {store} from './redux/createStore';
 import {View} from 'react-native';
 import Landing from './screen/Landing';
 
 const App = () => {
   return (
-    <View>
-      <Landing />
-    </View>
+    <Provider store={store}>
+      <View>
+        <Landing />
+      </View>
+    </Provider>
   );
 };
 
