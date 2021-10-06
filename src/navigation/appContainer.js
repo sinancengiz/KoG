@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {AppStack, AuthStack} from './index';
 import {Landing, Login, Signup} from '../screen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -10,7 +9,10 @@ const Stack = createNativeStackNavigator();
 const AppContainer = ({isAuthenticated}) => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}>
         {!isAuthenticated ? (
           <>
             <Stack.Screen name="Landing" component={Landing} />
