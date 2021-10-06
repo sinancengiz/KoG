@@ -11,6 +11,7 @@ const Landing = ({
   error,
   userInfo,
   onLoginRequest,
+  navigation,
 }) => {
   if (!isAuthenticated) {
     console.log('It is not autanticated');
@@ -35,9 +36,7 @@ const Landing = ({
         </Pressable>
         <Pressable
           style={styles.signupButton}
-          onPress={() => {
-            alert('Signup Button Pressed');
-          }}>
+          onPress={() => navigation.navigate('Signup')}>
           <Text style={styles.buttonText}>{'Sign Up'}</Text>
         </Pressable>
       </View>
