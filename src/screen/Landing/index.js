@@ -1,8 +1,22 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {loginRequest} from '../../redux/actions/authActions';
 import {ScrollView, View, Text, Image, Pressable} from 'react-native';
 import {styles} from './Landing.component.style';
 
-const Landing = () => {
+const Landing = ({
+  isFetching,
+  isAuthenticated,
+  failure,
+  error,
+  userInfo,
+  onLoginRequest,
+}) => {
+  if (!isAuthenticated) {
+    console.log('It is not autanticated');
+  } else {
+    console.log('It is autanticated');
+  }
   return (
     <ScrollView style={styles.scrollView}>
       <View style={styles.container}>
@@ -15,7 +29,7 @@ const Landing = () => {
         <Pressable
           style={styles.loginButton}
           onPress={() => {
-            alert('Login Button Pressed');
+            onLoginRequest({email: 'admin@gmail.com', password: 'password'});
           }}>
           <Text style={styles.buttonText}>{'Login'}</Text>
         </Pressable>
@@ -31,4 +45,16 @@ const Landing = () => {
   );
 };
 
-export default Landing;
+const mapStateToProps = (state) => ({
+  isFetching: state.auth.isFetching,
+  isAuthenticated: state.auth.isAuthenticated,
+  failure: state.auth.failure,
+  error: state.auth.error,
+  userInfo: state.auth.userInfo,
+});
+
+const mapDispatchToProps = {
+  onLoginRequest: loginRequest,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Landing);

@@ -14,7 +14,7 @@ export default function auth(state = initialState, action) {
       return {
         ...state,
         isFetching: true,
-        isAuthenticated: false,
+        isAuthenticated: !state.isAuthenticated,
         failure: false,
         error: null,
       };
@@ -75,5 +75,7 @@ export default function auth(state = initialState, action) {
         user: null,
         error: null,
       };
+    default:
+      return state;
   }
 }
