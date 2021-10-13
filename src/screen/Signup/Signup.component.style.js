@@ -50,7 +50,8 @@ export const styles = {
   input: {
     color: 'black',
     backgroundColor: 'white',
-    borderSize: 4,
+    borderRadius: 5,
+    borderWidth: 2,
     width: 250,
     height: 40,
     margin: 5,
