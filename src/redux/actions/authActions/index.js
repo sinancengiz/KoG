@@ -5,9 +5,10 @@ const loginRequest = (credentials) => ({
   credentials,
 });
 
-const loginSuccess = (user) => ({
+const loginSuccess = (user, auth_token) => ({
   type: AUTH.LOGIN_SUCCESS,
   user,
+  auth_token,
 });
 
 const loginFailure = (error) => ({

@@ -26,6 +26,7 @@ export default function auth(state = initialState, action) {
         isAuthenticated: true,
         failure: false,
         user: action.user,
+        authToken: action.authToken,
         error: null,
       };
     case AUTH.LOGIN_FAILURE:
