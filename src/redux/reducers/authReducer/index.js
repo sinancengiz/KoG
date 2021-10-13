@@ -25,7 +25,7 @@ export default function auth(state = initialState, action) {
         isFetching: false,
         isAuthenticated: true,
         failure: false,
-        user: action.user,
+        userInfo: action.user,
         authToken: action.authToken,
         error: null,
       };
@@ -35,7 +35,7 @@ export default function auth(state = initialState, action) {
         isFetching: false,
         isAuthenticated: false,
         failure: true,
-        user: null,
+        userInfo: null,
         error: action.error,
       };
     case AUTH.SIGNUP_REQUEST:
@@ -52,8 +52,9 @@ export default function auth(state = initialState, action) {
         isFetching: false,
         isAuthenticated: true,
         failure: false,
-        user: action.user,
+        userInfo: action.user,
         error: null,
+        authToken: action.authToken,
       };
     case AUTH.SIGNUP_FAILURE:
       return {
@@ -61,7 +62,7 @@ export default function auth(state = initialState, action) {
         isFetching: false,
         isAuthenticated: false,
         failure: true,
-        user: null,
+        userInfo: null,
         error: action.error,
       };
     case AUTH.REQUEST_LOGOUT:
@@ -74,8 +75,9 @@ export default function auth(state = initialState, action) {
       return {
         isAuthenticated: false,
         isFetching: false,
-        user: null,
+        userInfo: null,
         error: null,
+        authToken: null,
       };
     default:
       return state;

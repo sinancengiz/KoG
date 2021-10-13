@@ -1,15 +1,14 @@
 import React, {useState} from 'react';
-import {
-  ScrollView,
-  View,
-  Text,
-  Image,
-  Pressable,
-  TextInput,
-} from 'react-native';
+import {connect} from 'react-redux';
+import {logout} from '../../redux/actions/authActions';
+import {ScrollView, View, Text, Image, Pressable} from 'react-native';
 import {styles} from './CreateOrJoin.component.style';
 
-const CreateOrJoin = () => {
+const CreateOrJoin = ({userInfo, onLogout}) => {
+  console.log('userInfo', userInfo);
+  const onLogoutButtonClicked = () => {
+    onLogout();
+  };
   return (
     <ScrollView style={styles.scrollView}>
       <Text style={styles.title}>KoG</Text>
@@ -19,6 +18,7 @@ const CreateOrJoin = () => {
           style={styles.iconStyle}
           source={require('../../assets/icons/castle(1).png')}
         />
+        <Text style={styles.subTitle}>Hello! {userInfo.user_name}</Text>
         <Pressable
           style={styles.signupButton}
           onPress={() => {
@@ -33,9 +33,24 @@ const CreateOrJoin = () => {
           }}>
           <Text style={styles.buttonText}>{'Join a Game'}</Text>
         </Pressable>
+        <Pressable style={styles.signupButton} onPress={onLogoutButtonClicked}>
+          <Text style={styles.buttonText}>{'Logout'}</Text>
+        </Pressable>
       </View>
     </ScrollView>
   );
 };
 
-export default CreateOrJoin;
+const mapStateToProps = (state) => ({
+  isFetching: state.auth.isFetching,
+  isAuthenticated: state.auth.isAuthenticated,
+  failure: state.auth.failure,
+  error: state.auth.error,
+  userInfo: state.auth.userInfo,
+});
+
+const mapDispatchToProps = {
+  onLogout: logout,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateOrJoin);

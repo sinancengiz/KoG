@@ -21,9 +21,10 @@ const signupRequest = (credentials) => ({
   credentials,
 });
 
-const signupSuccess = (user) => ({
+const signupSuccess = (user, auth_token) => ({
   type: AUTH.SIGNUP_SUCCESS,
   user,
+  auth_token,
 });
 
 const signupFailure = (error) => ({

@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import {connect} from 'react-redux';
+import {signupRequest} from '../../redux/actions/authActions';
 import {
   ScrollView,
   View,
@@ -9,11 +11,20 @@ import {
 } from 'react-native';
 import {styles} from './Signup.component.style';
 
-const SignUp = () => {
+const SignUp = ({onSignupRequest}) => {
   const [userName, onChangeUserName] = useState(null);
   const [email, onChangeEmail] = useState(null);
   const [password, onChangePassword] = useState(null);
   const [passwordConfirmation, onChangePasswordConfirmation] = useState(null);
+
+  const onSignupButtonClicked = () => {
+    onSignupRequest({
+      user_name: userName,
+      email: email,
+      password: password,
+      password_confirmation: passwordConfirmation,
+    });
+  };
   return (
     <ScrollView style={styles.scrollView}>
       <Text style={styles.title}>KoG</Text>
@@ -47,11 +58,7 @@ const SignUp = () => {
           value={passwordConfirmation}
           placeholder="Confirm Password"
         />
-        <Pressable
-          style={styles.signupButton}
-          onPress={() => {
-            alert('Sign up Button Pressed');
-          }}>
+        <Pressable style={styles.signupButton} onPress={onSignupButtonClicked}>
           <Text style={styles.buttonText}>{'Sign Up'}</Text>
         </Pressable>
       </View>
@@ -59,4 +66,16 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+const mapStateToProps = (state) => ({
+  isFetching: state.auth.isFetching,
+  isAuthenticated: state.auth.isAuthenticated,
+  failure: state.auth.failure,
+  error: state.auth.error,
+  userInfo: state.auth.userInfo,
+});
+
+const mapDispatchToProps = {
+  onSignupRequest: signupRequest,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
