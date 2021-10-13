@@ -7,7 +7,6 @@ function* handleLoginRequest(action) {
   let user = null;
   let auth_token = null;
   try {
-    console.log(action.credentials);
     const response = yield fetch(
       'https://fathomless-ridge-02021.herokuapp.com/auth/login',
       {
@@ -18,13 +17,14 @@ function* handleLoginRequest(action) {
         },
         body: JSON.stringify(action.credentials), // body data type must match "Content-Type" header
       },
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        data.user ? (user = data.user) : (user = null);
-        data.auth_token ? (auth_token = data.auth_token) : (auth_token = null);
-      });
-    yield put(loginSuccess(user, auth_token));
+    ).then((response) => response.json());
+    const user = response.user;
+    const auth_token = response.auth_token;
+    console.log('user', user);
+    console.log('auth_token', auth_token);
+    if (user && auth_token) {
+      yield put(loginSuccess(user, auth_token));
+    }
   } catch (e) {
     console.log('error', e);
   }
