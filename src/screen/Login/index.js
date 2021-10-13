@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import {connect} from 'react-redux';
+import {loginRequest} from '../../redux/actions/authActions';
 import {
   ScrollView,
   View,
@@ -9,9 +11,14 @@ import {
 } from 'react-native';
 import {styles} from './Login.component.style';
 
-const Login = () => {
+const Login = ({onLoginRequest}) => {
   const [email, onChangeEmail] = useState(null);
   const [password, onChangePassword] = useState(null);
+
+  const onLoginButtonClicked = () => {
+    onLoginRequest({email, password});
+  };
+
   return (
     <ScrollView style={styles.scrollView}>
       <Text style={styles.title}>KoG</Text>
@@ -33,11 +40,7 @@ const Login = () => {
           value={password}
           placeholder="Enter Password"
         />
-        <Pressable
-          style={styles.loginButton}
-          onPress={() => {
-            alert('Login Button Pressed');
-          }}>
+        <Pressable style={styles.loginButton} onPress={onLoginButtonClicked}>
           <Text style={styles.buttonText}>{'Login'}</Text>
         </Pressable>
       </View>
@@ -45,4 +48,16 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapStateToProps = (state) => ({
+  isFetching: state.auth.isFetching,
+  isAuthenticated: state.auth.isAuthenticated,
+  failure: state.auth.failure,
+  error: state.auth.error,
+  userInfo: state.auth.userInfo,
+});
+
+const mapDispatchToProps = {
+  onLoginRequest: loginRequest,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

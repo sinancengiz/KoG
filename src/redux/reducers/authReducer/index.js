@@ -6,6 +6,7 @@ const initialState = {
   userInfo: null,
   failure: false,
   error: null,
+  authToken: null,
 };
 
 export default function auth(state = initialState, action) {
@@ -14,7 +15,7 @@ export default function auth(state = initialState, action) {
       return {
         ...state,
         isFetching: true,
-        isAuthenticated: !state.isAuthenticated,
+        isAuthenticated: false,
         failure: false,
         error: null,
       };

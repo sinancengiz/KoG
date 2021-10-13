@@ -29,9 +29,7 @@ const Landing = ({
         />
         <Pressable
           style={styles.loginButton}
-          onPress={() => {
-            onLoginRequest({email: 'admin@gmail.com', password: 'password'});
-          }}>
+          onPress={() => navigation.navigate('Login')}>
           <Text style={styles.buttonText}>{'Login'}</Text>
         </Pressable>
         <Pressable
