@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import {logout} from '../../redux/actions/authActions';
 import {ScrollView, View, Text, Image, Pressable} from 'react-native';
@@ -22,14 +22,14 @@ const CreateOrJoin = ({userInfo, onLogout}) => {
         <Pressable
           style={styles.signupButton}
           onPress={() => {
-            alert('Create Button Clicked');
+            console.log('Create Button Clicked');
           }}>
           <Text style={styles.buttonText}>{'Create a Game'}</Text>
         </Pressable>
         <Pressable
           style={styles.signupButton}
           onPress={() => {
-            alert('Join Button Clicked');
+            console.log('Join Button Clicked');
           }}>
           <Text style={styles.buttonText}>{'Join a Game'}</Text>
         </Pressable>
