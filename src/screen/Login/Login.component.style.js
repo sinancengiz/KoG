@@ -47,6 +47,12 @@ export const styles = {
     fontWeight: 'bold',
   },
   input: {
-    color: 'red',
+    color: 'black',
+    backgroundColor: 'white',
+    borderRadius: 5,
+    borderWidth: 2,
+    width: 250,
+    height: 40,
+    margin: 5,
   },
 };

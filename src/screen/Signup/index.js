@@ -51,12 +51,14 @@ const SignUp = ({onSignupRequest}) => {
           onChangeText={onChangePassword}
           value={password}
           placeholder="Enter Password"
+          secureTextEntry={true}
         />
         <TextInput
           style={styles.input}
           onChangeText={onChangePasswordConfirmation}
           value={passwordConfirmation}
           placeholder="Confirm Password"
+          secureTextEntry={true}
         />
         <Pressable style={styles.signupButton} onPress={onSignupButtonClicked}>
           <Text style={styles.buttonText}>{'Sign Up'}</Text>

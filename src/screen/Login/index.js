@@ -39,6 +39,7 @@ const Login = ({onLoginRequest}) => {
           onChangeText={onChangePassword}
           value={password}
           placeholder="Enter Password"
+          secureTextEntry={true}
         />
         <Pressable style={styles.loginButton} onPress={onLoginButtonClicked}>
           <Text style={styles.buttonText}>{'Login'}</Text>
