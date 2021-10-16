@@ -35,7 +35,8 @@ export const styles = {
   },
   signupButton: {
     backgroundColor: 'red',
-    marginTop: '10%',
+    marginTop: '5%',
+    marginBottom: '5%',
     minWidth: 250,
     minHeight: 40,
     justifyContent: 'center',
@@ -55,5 +56,6 @@ export const styles = {
     width: 250,
     height: 40,
     margin: 5,
+    paddingLeft: 10,
   },
 };

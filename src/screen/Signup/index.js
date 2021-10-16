@@ -27,9 +27,9 @@ const SignUp = ({onSignupRequest}) => {
   };
   return (
     <ScrollView style={styles.scrollView}>
-      <Text style={styles.title}>KoG</Text>
-      <Text style={styles.subTitle}>Kingdom of The Greatest</Text>
       <View style={styles.container}>
+        <Text style={styles.title}>KoG</Text>
+        <Text style={styles.subTitle}>Kingdom of The Greatest</Text>
         <Image
           style={styles.iconStyle}
           source={require('../../assets/icons/castle(1).png')}

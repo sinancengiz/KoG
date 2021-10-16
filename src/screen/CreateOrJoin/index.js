@@ -11,29 +11,29 @@ const CreateOrJoin = ({userInfo, onLogout}) => {
   };
   return (
     <ScrollView style={styles.scrollView}>
-      <Text style={styles.title}>KoG</Text>
-      <Text style={styles.subTitle}>Kingdom of The Greatest</Text>
       <View style={styles.container}>
+        <Text style={styles.title}>KoG</Text>
+        <Text style={styles.subTitle}>Kingdom of The Greatest</Text>
         <Image
           style={styles.iconStyle}
           source={require('../../assets/icons/castle(1).png')}
         />
         <Text style={styles.subTitle}>Hello! {userInfo.user_name}</Text>
         <Pressable
-          style={styles.signupButton}
+          style={styles.createButton}
           onPress={() => {
             console.log('Create Button Clicked');
           }}>
           <Text style={styles.buttonText}>{'Create a Game'}</Text>
         </Pressable>
         <Pressable
-          style={styles.signupButton}
+          style={styles.joinButton}
           onPress={() => {
             console.log('Join Button Clicked');
           }}>
           <Text style={styles.buttonText}>{'Join a Game'}</Text>
         </Pressable>
-        <Pressable style={styles.signupButton} onPress={onLogoutButtonClicked}>
+        <Pressable style={styles.logoutButton} onPress={onLogoutButtonClicked}>
           <Text style={styles.buttonText}>{'Logout'}</Text>
         </Pressable>
       </View>
