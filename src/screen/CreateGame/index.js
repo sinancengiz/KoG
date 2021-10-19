@@ -7,12 +7,11 @@ const CreateGame = ({userInfo, navigation}) => {
   return (
     <ScrollView style={styles.scrollView}>
       <View style={styles.container}>
-        <Text style={styles.subTitle}>Create Game</Text>
         <Image
           style={styles.iconStyle}
           source={require('../../assets/icons/castle(1).png')}
         />
-        <Text style={styles.subTitle}>Hello! {userInfo.user_name}</Text>
+        <Text style={styles.subTitle}> {userInfo.user_name} you can create a New Game</Text>
         <Pressable style={styles.logoutButton} onPress={()=>{alert("create game")}}>
           <Text style={styles.buttonText}>{'Create game'}</Text>
         </Pressable>

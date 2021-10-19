@@ -30,7 +30,7 @@ export const styles = {
   iconStyle: {
     width: 200,
     height: 200,
-    marginTop: '10%',
+    marginTop: '5%',
     marginBottom: '5%',
   },
   createButton: {
