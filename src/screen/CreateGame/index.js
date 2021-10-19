@@ -1,9 +1,10 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {connect} from 'react-redux';
-import {ScrollView, View, Text, Image, Pressable} from 'react-native';
+import {ScrollView, View, Text,TextInput, Image, Pressable} from 'react-native';
 import {styles} from './CreateGame.component.style';
 
 const CreateGame = ({userInfo, navigation}) => {
+    const [gameTitle, onChangeGameTitle] = useState(null);
   return (
     <ScrollView style={styles.scrollView}>
       <View style={styles.container}>
@@ -11,12 +12,18 @@ const CreateGame = ({userInfo, navigation}) => {
           style={styles.iconStyle}
           source={require('../../assets/icons/castle(1).png')}
         />
-        <Text style={styles.subTitle}> {userInfo.user_name} you can create a New Game</Text>
+        <Text style={styles.subTitle}> Create a New Game</Text>
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangeGameTitle}
+          value={gameTitle}
+          placeholder="Game Title"
+        />
         <Pressable style={styles.logoutButton} onPress={()=>{alert("create game")}}>
           <Text style={styles.buttonText}>{'Create game'}</Text>
         </Pressable>
         <Pressable 
-            style={styles.joinButton} 
+            // style={styles.joinButton} 
             onPress={() => navigation.navigate('CreateOrJoin')}
         >
           <Text style={styles.buttonText}>{'Back'}</Text>
