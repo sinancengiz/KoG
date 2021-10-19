@@ -4,7 +4,7 @@ import {logout} from '../../redux/actions/authActions';
 import {ScrollView, View, Text, Image, Pressable} from 'react-native';
 import {styles} from './CreateOrJoin.component.style';
 
-const CreateOrJoin = ({userInfo, onLogout}) => {
+const CreateOrJoin = ({userInfo, onLogout, navigation}) => {
   console.log('userInfo', userInfo);
   const onLogoutButtonClicked = () => {
     onLogout();
@@ -21,9 +21,8 @@ const CreateOrJoin = ({userInfo, onLogout}) => {
         <Text style={styles.subTitle}>Hello! {userInfo.user_name}</Text>
         <Pressable
           style={styles.createButton}
-          onPress={() => {
-            console.log('Create Button Clicked');
-          }}>
+          onPress={() => navigation.navigate('CreateGame')}
+          >
           <Text style={styles.buttonText}>{'Create a Game'}</Text>
         </Pressable>
         <Pressable

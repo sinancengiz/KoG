@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Landing, Login, Signup, CreateOrJoin} from '../screen';
+import {Landing, Login, Signup, CreateOrJoin, CreateGame} from '../screen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 //import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -36,6 +36,7 @@ const AppContainer = ({isAuthenticated}) => {
         ) : (
           <>
             <Stack.Screen name="CreateOrJoin" component={CreateOrJoin} />
+            <Stack.Screen name="CreateGame" component={CreateGame} />
           </>
         )}
       </Stack.Navigator>
