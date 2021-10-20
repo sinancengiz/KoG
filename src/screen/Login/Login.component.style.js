@@ -62,10 +62,10 @@ export const styles = {
     borderColor: 'red',
     borderRadius: 10,
     borderWidth: 2,
-    height: 40,
     width: "80%",
     margin: 5,
     textAlign: 'center',
     paddingTop: 10,
+    paddingBottom: 10,
   }
 };

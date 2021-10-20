@@ -19,8 +19,10 @@ function* handleCreateGameRequest(action) {
     ).then((response) => response.json());
     console.log('createGameResponse', createGameResponse);
     const game = createGameResponse.game;
-    if (game.id) {
+    if (game) {
       yield put(createGameSuccess(game));
+    }else{
+      yield put(createGameFailure(createGameResponse.message));
     }
   } catch (e) {
     console.log('error', e);

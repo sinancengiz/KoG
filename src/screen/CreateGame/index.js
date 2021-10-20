@@ -4,7 +4,7 @@ import {ScrollView, View, Text,TextInput, Image, Pressable} from 'react-native';
 import {createGameRequest} from '../../redux/actions/gameActions';
 import {styles} from './CreateGame.component.style';
 
-const CreateGame = ({userInfo, onCreatetGameRequest, navigation, game}) => {
+const CreateGame = ({userInfo, onCreatetGameRequest, navigation, game, error}) => {
   if(game){
     console.log(game);
   }
@@ -20,6 +20,7 @@ const CreateGame = ({userInfo, onCreatetGameRequest, navigation, game}) => {
           source={require('../../assets/icons/castle(1).png')}
         />
         <Text style={styles.subTitle}> Create a New Game</Text>
+        {error && <Text style={styles.error}>{error}</Text>}
         <TextInput
           style={styles.input}
           onChangeText={onChangeGameTitle}
@@ -44,9 +45,9 @@ const mapStateToProps = (state) => ({
   isFetching: state.auth.isFetching,
   isAuthenticated: state.auth.isAuthenticated,
   failure: state.auth.failure,
-  error: state.auth.error,
   userInfo: state.auth.userInfo,
-  game: state.game.game
+  game: state.game.game,
+  error: state.game.error,
 });
 
 const mapDispatchToProps = {
