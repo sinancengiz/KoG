@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import {styles} from './Signup.component.style';
 
-const SignUp = ({onSignupRequest}) => {
+const SignUp = ({onSignupRequest, error}) => {
   const [userName, onChangeUserName] = useState(null);
   const [email, onChangeEmail] = useState(null);
   const [password, onChangePassword] = useState(null);
@@ -34,6 +34,7 @@ const SignUp = ({onSignupRequest}) => {
           style={styles.iconStyle}
           source={require('../../assets/icons/castle(1).png')}
         />
+        {error && <Text style={styles.error}>{error}</Text>}
         <TextInput
           style={styles.input}
           onChangeText={onChangeUserName}

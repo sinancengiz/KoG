@@ -1,6 +1,6 @@
 import {call, put, takeEvery} from 'redux-saga/effects';
 import {AUTH} from '../../actions/actionTypes';
-import {loginSuccess, signupSuccess} from '../../actions/authActions';
+import {loginSuccess, signupSuccess, loginFailure, signupFailure} from '../../actions/authActions';
 
 // worker Saga: will be fired on USER_FETCH_REQUESTED actions
 function* handleLoginRequest(action) {
@@ -20,6 +20,9 @@ function* handleLoginRequest(action) {
     const auth_token = loginResponse.auth_token;
     if (user && auth_token) {
       yield put(loginSuccess(user, auth_token));
+    }else{
+      console.log('error', loginResponse);
+      yield put(loginFailure(loginResponse.message));
     }
   } catch (e) {
     console.log('error', e);
@@ -41,10 +44,11 @@ function* handleSignUpRequest(action) {
     ).then((response) => response.json());
     const user = signupResponse.user;
     const auth_token = signupResponse.auth_token;
-    console.log('user', user);
-    console.log('auth_token', auth_token);
     if (user && auth_token) {
       yield put(signupSuccess(user, auth_token));
+    }else{
+      console.log('error', signupResponse);
+      yield put(signupFailure(signupResponse.message));
     }
   } catch (e) {
     console.log('error', e);

@@ -13,11 +13,6 @@ const Landing = ({
   onLoginRequest,
   navigation,
 }) => {
-  if (!isAuthenticated) {
-    console.log('It is not autanticated');
-  } else {
-    console.log('It is autanticated');
-  }
   return (
     <ScrollView style={styles.scrollView}>
       <View style={styles.container}>

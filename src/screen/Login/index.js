@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import {styles} from './Login.component.style';
 
-const Login = ({onLoginRequest}) => {
+const Login = ({onLoginRequest, error}) => {
   const [email, onChangeEmail] = useState(null);
   const [password, onChangePassword] = useState(null);
 
@@ -28,6 +28,7 @@ const Login = ({onLoginRequest}) => {
           style={styles.iconStyle}
           source={require('../../assets/icons/castle(1).png')}
         />
+        {error && <Text style={styles.error}>{error}</Text>}
         <TextInput
           style={styles.input}
           onChangeText={onChangeEmail}

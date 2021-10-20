@@ -58,4 +58,15 @@ export const styles = {
     margin: 5,
     paddingLeft: 10,
   },
+  error: {
+    color: 'black',
+    backgroundColor: 'pink',
+    borderColor: 'red',
+    borderRadius: 10,
+    borderWidth: 2,
+    width: "80%",
+    margin: 5,
+    textAlign: 'center',
+    paddingTop: 10,
+  }
 };
