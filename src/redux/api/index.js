@@ -21,7 +21,7 @@ export const makeApiCall = async (url, method, data, token=null) => {
   const header = returnApiCallHeader(token);
   console.log('header', header, data, url, method, token);
   return await fetch(
-    "https://fathomless-ridge-02021.herokuapp.com/auth/login",
+    API_URL_PROD + url,
     {
       method: method, // *GET, POST, PUT, DELETE, etc.
       headers: header,
