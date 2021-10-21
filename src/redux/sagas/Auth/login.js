@@ -17,7 +17,7 @@ function* handleLoginRequest(action) {
     //     body: JSON.stringify(action.credentials), // body data type must match "Content-Type" header
     //   },
     // ).then((response) => response.json());
-    const loginResponse = yield call(makeApiCall , '/auth/login', 'POST', action.credentials);
+    const loginResponse = yield call([this, makeApiCall] , '/auth/login', 'POST', action.credentials);
     const user = loginResponse.user;
     const auth_token = loginResponse.auth_token;
     if (user && auth_token) {
