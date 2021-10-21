@@ -15,6 +15,21 @@ const createGameFailure = (error) => ({
   error,
 });
 
+const getGameRequest = (credentials) => ({
+  type: GAME.GET_GAME_REQUEST,
+  credentials,
+});
+
+const getGameSuccess = (game) => ({
+  type: GAME.GET_GAME_SUCCESS,
+  game,
+});
+
+const getGameFailure = (error) => ({
+  type: GAME.GET_GAME_FAILURE,
+  error,
+});
+
 export {
     createGameRequest,
     createGameSuccess,

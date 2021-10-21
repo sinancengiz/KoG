@@ -25,7 +25,7 @@ export default function game(state = initialState, action) {
         isFetching: false,
         isAuthenticated: true,
         failure: false,
-        game: action.game,
+        game: action,
         error: null,
       };
     case GAME.CREATE_GAME_FAILURE:
@@ -37,6 +37,32 @@ export default function game(state = initialState, action) {
         game: null,
         error: action.error,
       };
+      case GAME.GET_GAME_REQUEST:
+        return {
+          ...state,
+          isFetching: true,
+          isAuthenticated: false,
+          failure: false,
+          error: null,
+        };
+      case GAME.GET_GAME_SUCCESS:
+        return {
+          ...state,
+          isFetching: false,
+          isAuthenticated: true,
+          failure: false,
+          game: action,
+          error: null,
+        };
+      case GAME.GET_GAME_FAILURE:
+        return {
+          ...state,
+          isFetching: false,
+          isAuthenticated: false,
+          failure: true,
+          game: null,
+          error: action.error,
+        };
     default:
       return state;
   }

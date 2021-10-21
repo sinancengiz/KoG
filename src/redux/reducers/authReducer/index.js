@@ -26,7 +26,7 @@ export default function auth(state = initialState, action) {
         isAuthenticated: true,
         failure: false,
         userInfo: action.user,
-        authToken: action.authToken,
+        authToken: action.auth_token,
         error: null,
       };
     case AUTH.LOGIN_FAILURE:
@@ -54,7 +54,7 @@ export default function auth(state = initialState, action) {
         failure: false,
         userInfo: action.user,
         error: null,
-        authToken: action.authToken,
+        authToken: action.auth_token,
       };
     case AUTH.SIGNUP_FAILURE:
       return {

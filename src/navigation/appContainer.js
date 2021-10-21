@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Landing, Login, Signup, CreateOrJoin, CreateGame} from '../screen';
+import {Landing, Login, Signup, CreateOrJoin, CreateGame, Home} from '../screen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 //import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -20,7 +20,7 @@ const Stack = createNativeStackNavigator();
 //   );
 // }
 
-const AppContainer = ({isAuthenticated}) => {
+const AppContainer = ({isAuthenticated, game}) => {
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -34,9 +34,16 @@ const AppContainer = ({isAuthenticated}) => {
             <Stack.Screen name="Signup" component={Signup} />
           </>
         ) : (
-          <>
-            <Stack.Screen name="CreateOrJoin" component={CreateOrJoin} />
-            <Stack.Screen name="CreateGame" component={CreateGame} />
+          <>{game ? ( 
+              <Stack.Screen name="Home" component={Home} />
+            ) : (
+              <>
+              <Stack.Screen name="CreateOrJoin" component={CreateOrJoin} />
+              <Stack.Screen name="CreateGame" component={CreateGame} />
+              </>
+            )}
+
+            
           </>
         )}
       </Stack.Navigator>
@@ -46,6 +53,7 @@ const AppContainer = ({isAuthenticated}) => {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  game: state.game.game,
 });
 
 export default connect(mapStateToProps)(AppContainer);
