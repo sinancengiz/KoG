@@ -6,17 +6,6 @@ import { makeApiCall } from '../../api';
 // worker Saga: will be fired on USER_FETCH_REQUESTED actions
 function* handleLoginRequest(action) {
   try {
-    // const loginResponse = yield fetch(
-    //   'https://fathomless-ridge-02021.herokuapp.com/auth/login',
-    //   {
-    //     method: 'POST', // *GET, POST, PUT, DELETE, etc.
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       // 'Content-Type': 'application/x-www-form-urlencoded',
-    //     },
-    //     body: JSON.stringify(action.credentials), // body data type must match "Content-Type" header
-    //   },
-    // ).then((response) => response.json());
     const loginResponse = yield call([this, makeApiCall] , '/auth/login', 'POST', action.credentials);
     const user = loginResponse.user;
     const auth_token = loginResponse.auth_token;
@@ -33,17 +22,7 @@ function* handleLoginRequest(action) {
 
 function* handleSignUpRequest(action) {
   try {
-    const signupResponse = yield fetch(
-      'https://fathomless-ridge-02021.herokuapp.com/signup',
-      {
-        method: 'POST', // *GET, POST, PUT, DELETE, etc.
-        headers: {
-          'Content-Type': 'application/json',
-          // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: JSON.stringify(action.credentials), // body data type must match "Content-Type" header
-      },
-    ).then((response) => response.json());
+    const signupResponse = yield call([this, makeApiCall] , '/signup', 'POST', action.credentials);
     const user = signupResponse.user;
     const auth_token = signupResponse.auth_token;
     if (user && auth_token) {
