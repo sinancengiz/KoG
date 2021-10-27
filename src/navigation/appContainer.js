@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Landing, Login, Signup, CreateOrJoin, CreateGame, Home} from '../screen';
+import {Landing, Login, Signup, CreateOrJoin, CreateGame, Home, StartGame} from '../screen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 //import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -34,12 +34,17 @@ const AppContainer = ({isAuthenticated, game}) => {
             <Stack.Screen name="Signup" component={Signup} />
           </>
         ) : (
-          <>{game ? ( 
-              <Stack.Screen name="Home" component={Home} />
+          <>{ game ? ( 
+               game.started ? (
+                  <Stack.Screen name="Home" component={Home} />
+                ) : (
+                  <Stack.Screen name="StartGame" component={StartGame} />
+                )
             ) : (
               <>
               <Stack.Screen name="CreateOrJoin" component={CreateOrJoin} />
               <Stack.Screen name="CreateGame" component={CreateGame} />
+              <Stack.Screen name="StartGame" component={StartGame} />
               </>
             )}
 

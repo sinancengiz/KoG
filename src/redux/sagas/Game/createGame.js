@@ -22,8 +22,8 @@ function* handleCreateGameRequest(action) {
       },
     ).then((response) => response.json());
     console.log('createGameResponse', createGameResponse);
-    const game = createGameResponse.game;
-    if (game) {
+    const game = createGameResponse;
+    if (game.id) {
       yield put(createGameSuccess(game));
     }else{
       yield put(createGameFailure(createGameResponse.message));
