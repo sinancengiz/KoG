@@ -21,8 +21,7 @@ const CreateOrJoin = ({userInfo, onLogout, navigation}) => {
         <Text style={styles.subTitle}>Hello! {userInfo.user_name}</Text>
         <Pressable
           style={styles.createButton}
-          onPress={() => navigation.navigate('CreateGame')}
-          >
+          onPress={() => navigation.navigate('CreateGame')}>
           <Text style={styles.buttonText}>{'Create a Game'}</Text>
         </Pressable>
         <Pressable
